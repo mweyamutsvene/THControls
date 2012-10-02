@@ -1,6 +1,6 @@
 //
-//  BDSurveyDialChoiceView.m
-//  BigDataApp
+//  THCircularProgressView.h
+//  
 //
 //  Created by Tommy Hanks on 8/15/12.
 //  Copyright 2012 Originate Labs. All rights reserved.

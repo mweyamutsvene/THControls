@@ -1,6 +1,6 @@
 //
 //  THCircularProgressView.h
-//  BigDataApp
+//  
 //
 //  Created by Tommy Hanks on 8/15/12.
 //  Copyright 2012 tommymaxhanks.com. All rights reserved.
