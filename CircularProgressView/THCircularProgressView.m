@@ -3,12 +3,30 @@
 //  
 //
 //  Created by Tommy Hanks on 8/15/12.
-//  Copyright 2012 Originate Labs. All rights reserved.
+//  Copyright 2012 tommymaxhanks.com. All rights reserved.
 //
+//
+// This code is distributed under the terms and conditions of the MIT license.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 
 #import "THCircularProgressView.h"
-#import "UILabel+Autoresize.h"
-#import "CSColor.h"
 #define PI 3.14159265358979323846
 #define START_OFFSET 270
 #define CENTER_INSET 10
@@ -142,11 +160,6 @@ static inline float radians(double degrees) { return degrees * PI / 180; }
   [super drawRect:rect];
   
   
-  CGFloat gradientColor [12];
-  [self componentsOfColor:_progressColor red:&(gradientColor[0]) green:&(gradientColor[1]) blue:&(gradientColor[2]) alpha:&(gradientColor[3])];
-  [self componentsOfColor:_progressColor red:&(gradientColor[4]) green:&(gradientColor[5]) blue:&(gradientColor[6]) alpha:&(gradientColor[7])];
-  [self componentsOfColor:_endGradientColor red:&(gradientColor[8]) green:&(gradientColor[9]) blue:&(gradientColor[10]) alpha:&(gradientColor[11])];
-
   int value = _percent * 360/100;
   
   // need some values to draw pie charts
@@ -161,6 +174,16 @@ static inline float radians(double degrees) { return degrees * PI / 180; }
   CGFloat x = CGRectGetWidth(parentViewBounds)*0.5;
   CGFloat y = CGRectGetHeight(parentViewBounds)*0.5;
   
+  //Create colors and locations
+  CGFloat locations [] = {
+    0.0, 0.9, 1.0
+  };
+  
+  CGFloat gradientColor [12];
+  [self componentsOfColor:_progressColor red:&(gradientColor[0]) green:&(gradientColor[1]) blue:&(gradientColor[2]) alpha:&(gradientColor[3])];
+  [self componentsOfColor:_progressColor red:&(gradientColor[4]) green:&(gradientColor[5]) blue:&(gradientColor[6]) alpha:&(gradientColor[7])];
+  [self componentsOfColor:_endGradientColor red:&(gradientColor[8]) green:&(gradientColor[9]) blue:&(gradientColor[10]) alpha:&(gradientColor[11])];
+  
   // Get the graphics context and clear it
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGContextClearRect(ctx, rect);
@@ -170,12 +193,6 @@ static inline float radians(double degrees) { return degrees * PI / 180; }
   
   // define line width
   CGContextSetLineWidth(ctx, 4.0);
-  
-  
-  //Create colors and locations
-  CGFloat locations [] = {
-    0.0, 0.9, 1.0
-  };
   
   //Create fill gradient
   CGColorSpaceRef baseSpace = CGColorSpaceCreateDeviceRGB();
