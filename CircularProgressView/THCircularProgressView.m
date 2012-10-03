@@ -31,6 +31,7 @@
 #define START_OFFSET 270
 #define CENTER_INSET 10
 #define kGoalPercent @"GoalPercent"
+
 static inline float radians(double degrees) { return degrees * PI / 180; }
 
 #pragma mark -
